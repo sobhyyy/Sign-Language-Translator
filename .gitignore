@@ -1,0 +1,7 @@
+env/
+.idea/
+__pycache__/
+Datasets/
+*.keras
+*.h5
+*.npy
