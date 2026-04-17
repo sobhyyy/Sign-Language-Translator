@@ -1,0 +1,11 @@
+1. Capture frame from camera
+2. Flip horizontally (selfie view)
+3. Detect hand using MediaPipe
+4. Extract 21 landmarks
+5. For each landmark: (x, y, z)
+6. Flatten to array of 63 values
+7. If hand is Right:
+   mirror X → lm[0::3] = 1.0 - lm[0::3]
+8. Repeat same frame 23 times
+9. Shape becomes (1, 23, 63)
+10. Normalize by max absolute value

@@ -1,0 +1,20 @@
+1. Get model output probabilities
+2. Find class index using argmax
+3. Get confidence score
+
+4. If confidence < 0.8 → ignore
+
+5. Stability check:
+   - Same prediction must appear 15 frames
+
+6. If class = "space":
+   add space to sentence
+
+7. If class = "del":
+   delete last character
+
+8. Else:
+   convert class to letter
+   avoid repeating same letter twice
+
+9. Build final sentence
