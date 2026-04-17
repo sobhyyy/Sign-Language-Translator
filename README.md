@@ -18,14 +18,14 @@ Supports both **Arabic 🇸🇦 and English 🇬🇧** and is ready for **mobile
 
 ---
 
-# 🧠 System Architecture
+## 🧠 System Architecture
 
 ```mermaid
 flowchart TD
     A[Camera Input] --> B[MediaPipe Hands]
     B --> C[21 Landmarks Extraction]
     C --> D[Flatten to 63 Features]
-    D --> E[Sequence Builder (23 Frames)]
+    D --> E[Sequence Builder - 23 Frames]
     E --> F[CNN + BiLSTM Model]
     F --> G[Prediction]
     G --> H[Postprocessing Logic]
@@ -36,13 +36,13 @@ flowchart TD
 
 ---
 
-# 🧩 Detailed Pipeline
+## 🧩 Detailed Pipeline
 
 ```mermaid
 flowchart LR
     A[Frame] --> B[Flip Image]
     B --> C[Hand Detection]
-    C --> D[Landmarks (21 x 3)]
+    C --> D[Landmarks - 21 x 3]
     D --> E[Normalization]
     E --> F[Sequence Buffer]
     F --> G[Model Inference]
@@ -53,21 +53,21 @@ flowchart LR
 
 ---
 
-# 🔄 Stability & Prediction Logic
+## 🔄 Stability & Prediction Logic
 
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
-    Idle --> Detecting : Hand Detected
-    Detecting --> Detecting : Same Prediction
-    Detecting --> Confirmed : Stable (15 frames)
+    Idle --> Detecting : Hand detected
+    Detecting --> Detecting : Same prediction
+    Detecting --> Confirmed : Stable for 15 frames
     Confirmed --> WaitingRelease
-    WaitingRelease --> Idle : Hand Removed
+    WaitingRelease --> Idle : Hand removed
 ```
 
 ---
 
-# 🧠 Model Details
+## 🧠 Model Details
 
 ### Input
 
@@ -91,7 +91,7 @@ flowchart LR
 
 ---
 
-# 📊 Models
+## 📊 Models
 
 | Model   | Classes |
 | ------- | ------- |
@@ -100,14 +100,14 @@ flowchart LR
 
 ---
 
-# ⚙️ Preprocessing
+## ⚙️ Preprocessing
 
 ```mermaid
 flowchart TD
     A[Capture Frame] --> B[Flip Frame]
     B --> C[Detect Hand]
     C --> D[Extract Landmarks]
-    D --> E[Flatten (63)]
+    D --> E[Flatten to 63]
     E --> F[Mirror if Right Hand]
     F --> G[Repeat to 23 Frames]
     G --> H[Normalize]
@@ -115,21 +115,22 @@ flowchart TD
 
 ---
 
-# 🧾 Postprocessing
+## 🧾 Postprocessing
 
 ```mermaid
 flowchart TD
     A[Model Output] --> B[Argmax]
     B --> C[Confidence Check]
-    C -->|< 0.8| D[Ignore]
-    C -->|>= 0.8| E[Stability Check]
-    E --> F[Apply Sentence Logic]
-    F --> G[Final Text]
+    C --> D{Confidence >= 0.8?}
+    D -- No --> E[Ignore]
+    D -- Yes --> F[Stability Check]
+    F --> G[Apply Sentence Logic]
+    G --> H[Final Text]
 ```
 
 ---
 
-# 📦 Project Structure
+## 📦 Project Structure
 
 ```text
 Sign-Language-Translator/
@@ -145,7 +146,7 @@ Sign-Language-Translator/
 
 ---
 
-# ▶️ Run the Project
+## ▶️ Run the Project
 
 ```bash
 pip install -r requirements.txt
@@ -161,7 +162,7 @@ python src/arabic_test.py
 
 ---
 
-# 📱 Mobile Deployment
+## 📱 Mobile Deployment
 
 ```text
 models/
@@ -174,7 +175,7 @@ models/
 
 ---
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 * TensorFlow / Keras
 * MediaPipe
@@ -186,7 +187,7 @@ models/
 
 ---
 
-# 🎯 Challenges Solved
+## 🎯 Challenges Solved
 
 * Temporal gesture modeling (LSTM)
 * Prediction noise reduction
@@ -195,7 +196,7 @@ models/
 
 ---
 
-# 🚀 Future Work
+## 🚀 Future Work
 
 * Word-level recognition
 * Offline Arabic TTS
@@ -204,7 +205,7 @@ models/
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 Ahmed Sobhy
 Aspiring AI Engineer
