@@ -209,7 +209,6 @@ models/
 
 ### 🟢 Arabic Model
 
-![Arabic Demo](assets/screenshots/arabic_preview.png)
 
 ▶️ [Watch Arabic Demo](https://github.com/sobhyyy/Sign-Language-Translator/blob/main/assets/Demo/Arabic_Test.mp4)
 
@@ -217,7 +216,6 @@ models/
 
 ### 🔵 English Model
 
-![English Demo](assets/screenshots/english_preview.png)
 
 ▶️ [Watch English Demo](https://github.com/sobhyyy/Sign-Language-Translator/blob/main/assets/Demo/English_Test.mp4)
 
